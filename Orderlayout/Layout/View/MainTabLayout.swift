@@ -9,16 +9,14 @@ import SwiftUI
 
 struct MainTabLayout: View {
     @State var index = 1
-    @State var offset: CGFloat = 0
     
     var body: some View {
         VStack (spacing: 0){
-            TabHeaderView(index: self.$index, offset: self.$offset)
-            
-            TabItemGroupView()
+            TabHeaderView(index: self.$index)
+
+            TabItemGroupView(tabIndex: self.$index)
             Spacer()
         }
-        .edgesIgnoringSafeArea(.all)
     }
 }
 

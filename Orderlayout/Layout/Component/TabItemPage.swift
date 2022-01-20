@@ -8,17 +8,26 @@
 import SwiftUI
 
 struct TabItemPage: View {
+    let columns: [GridItem] = Array(repeating: .init(.flexible()), count: 6)
+    let items: [String]
+    
     var body: some View {
-        HStack {
-            TabItemCell(item: "Item 1")
-            TabItemCell(item: "Item 2")
-            TabItemCell(item: "Item 3")
+        VStack {
+            LazyVGrid(columns: columns) {
+                ForEach(1...12, id: \.self) { index in
+                    let rand = Int.random(in: 0...4)
+                    TabItemCell(item: items[rand])
+                }
+            }.padding(.top)
+            Spacer()
         }
     }
 }
 
 struct TabItemComponent_Previews: PreviewProvider {
+    static let array = ["Newspaper", "Snacks", "Drinks", "Food", "Dessert"]
     static var previews: some View {
-        TabItemPage()
+        TabItemPage(items: array)
+.previewInterfaceOrientation(.landscapeLeft)
     }
 }

@@ -9,9 +9,10 @@ import SwiftUI
 
 struct TabHeaderView: View {
     @Binding var index : Int
-    @Binding var offset : CGFloat
     
     var body: some View {
+        //VStack to stack header and bottom border
+        //Hstack to stack header 
         VStack (alignment: .leading, content: {
 
             HStack {
@@ -53,15 +54,15 @@ struct TabHeaderView: View {
             .padding(.horizontal)
             .padding(.bottom, 10)
             .background(.red)
+//            .animation(.default)
         })
     }
 }
 
 struct TabHeaderView_Previews: PreviewProvider {
     @State static var index : Int = 1
-    @State static var offset : CGFloat = 0
     static var previews: some View {
-        TabHeaderView(index: self.$index, offset: self.$offset)
+        TabHeaderView(index: self.$index)
 .previewInterfaceOrientation(.landscapeLeft)
     }
 }
