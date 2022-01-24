@@ -11,6 +11,9 @@
 		15654FFA2797AD96003A7305 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15654FF92797AD96003A7305 /* ContentView.swift */; };
 		15654FFC2797AD9B003A7305 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 15654FFB2797AD9B003A7305 /* Assets.xcassets */; };
 		15654FFF2797AD9B003A7305 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 15654FFE2797AD9B003A7305 /* Preview Assets.xcassets */; };
+		D20BAD07279E4150002C30D2 /* OrderLayoutModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D20BAD06279E4150002C30D2 /* OrderLayoutModel.swift */; };
+		D20BAD0A279E41D8002C30D2 /* Json in Frameworks */ = {isa = PBXBuildFile; productRef = D20BAD09279E41D8002C30D2 /* Json */; };
+		D20BAD0C279E41D8002C30D2 /* Request in Frameworks */ = {isa = PBXBuildFile; productRef = D20BAD0B279E41D8002C30D2 /* Request */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -19,6 +22,7 @@
 		15654FF92797AD96003A7305 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		15654FFB2797AD9B003A7305 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		15654FFE2797AD9B003A7305 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
+		D20BAD06279E4150002C30D2 /* OrderLayoutModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrderLayoutModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -26,6 +30,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D20BAD0C279E41D8002C30D2 /* Request in Frameworks */,
+				D20BAD0A279E41D8002C30D2 /* Json in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -51,6 +57,8 @@
 		15654FF62797AD96003A7305 /* Orderlayout */ = {
 			isa = PBXGroup;
 			children = (
+				D20BAD05279E4114002C30D2 /* ModelView */,
+				D20BAD04279E4109002C30D2 /* Model */,
 				15654FF72797AD96003A7305 /* OrderlayoutApp.swift */,
 				15654FF92797AD96003A7305 /* ContentView.swift */,
 				15654FFB2797AD9B003A7305 /* Assets.xcassets */,
@@ -65,6 +73,21 @@
 				15654FFE2797AD9B003A7305 /* Preview Assets.xcassets */,
 			);
 			path = "Preview Content";
+			sourceTree = "<group>";
+		};
+		D20BAD04279E4109002C30D2 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				D20BAD06279E4150002C30D2 /* OrderLayoutModel.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		D20BAD05279E4114002C30D2 /* ModelView */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = ModelView;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -83,6 +106,10 @@
 			dependencies = (
 			);
 			name = Orderlayout;
+			packageProductDependencies = (
+				D20BAD09279E41D8002C30D2 /* Json */,
+				D20BAD0B279E41D8002C30D2 /* Request */,
+			);
 			productName = Orderlayout;
 			productReference = 15654FF42797AD96003A7305 /* Orderlayout.app */;
 			productType = "com.apple.product-type.application";
@@ -111,6 +138,9 @@
 				Base,
 			);
 			mainGroup = 15654FEB2797AD96003A7305;
+			packageReferences = (
+				D20BAD08279E41D8002C30D2 /* XCRemoteSwiftPackageReference "swift-request" */,
+			);
 			productRefGroup = 15654FF52797AD96003A7305 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -138,6 +168,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				15654FFA2797AD96003A7305 /* ContentView.swift in Sources */,
+				D20BAD07279E4150002C30D2 /* OrderLayoutModel.swift in Sources */,
 				15654FF82797AD96003A7305 /* OrderlayoutApp.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -341,6 +372,30 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		D20BAD08279E41D8002C30D2 /* XCRemoteSwiftPackageReference "swift-request" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/carson-katri/swift-request";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 1.0.0;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		D20BAD09279E41D8002C30D2 /* Json */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = D20BAD08279E41D8002C30D2 /* XCRemoteSwiftPackageReference "swift-request" */;
+			productName = Json;
+		};
+		D20BAD0B279E41D8002C30D2 /* Request */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = D20BAD08279E41D8002C30D2 /* XCRemoteSwiftPackageReference "swift-request" */;
+			productName = Request;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = 15654FEC2797AD96003A7305 /* Project object */;
 }
