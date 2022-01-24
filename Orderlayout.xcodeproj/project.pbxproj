@@ -57,6 +57,7 @@
 		15654FF62797AD96003A7305 /* Orderlayout */ = {
 			isa = PBXGroup;
 			children = (
+				D21410D9279E5B1A00DADE35 /* Component */,
 				D20BAD05279E4114002C30D2 /* ModelView */,
 				D20BAD04279E4109002C30D2 /* Model */,
 				15654FF72797AD96003A7305 /* OrderlayoutApp.swift */,
@@ -88,6 +89,13 @@
 			children = (
 			);
 			path = ModelView;
+			sourceTree = "<group>";
+		};
+		D21410D9279E5B1A00DADE35 /* Component */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Component;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
