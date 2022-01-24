@@ -15,12 +15,14 @@ struct TabItemGroupView: View {
     let item3 = ["Thor", "Superman", "Iron Man", "Hulk", "Captain America"]
     
     var body: some View {
-        TabView (selection: $tabIndex) {
-            TabItemPage(items: item1).tag(1)
-            TabItemPage(items: item2).tag(2)
-            TabItemPage(items: item3).tag(3)
-        }.tabViewStyle(.page(indexDisplayMode: .always))
-            .animation(Animation.easeInOut, value: tabIndex)
+        GeometryReader { proxy in
+            TabView (selection: $tabIndex) {
+                TabItemPage(items: item1, geo: proxy).tag(1)
+                TabItemPage(items: item2, geo: proxy).tag(2)
+                TabItemPage(items: item3, geo: proxy).tag(3)
+            }.tabViewStyle(.page(indexDisplayMode: .always))
+                .animation(Animation.easeInOut, value: tabIndex)
+        }
     }
 }
 
