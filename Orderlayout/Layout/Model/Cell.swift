@@ -9,12 +9,12 @@ import Foundation
 
 struct Cell: Codable {
     let color: Color
-    let updatedAt: AtedAt
+    let updatedAt: String
     let id: String
     let cellID, x, y, actionID: Int
     let actionType: ActionType
     let pageID: Int
-    let createdAt: AtedAt
+    let createdAt: String
     let action: Action
 
     enum CodingKeys: String, CodingKey {
@@ -28,5 +28,11 @@ struct Cell: Codable {
         case pageID = "page_id"
         case createdAt = "created_at"
         case action
+    }
+    
+    enum ActionType: String, Codable {
+        case appModelOrderLayoutGroup = "App\\Model\\OrderLayout\\Group"
+        case appModelProduct = "App\\Model\\Product"
+        case appModelPromotion = "App\\Model\\Promotion"
     }
 }

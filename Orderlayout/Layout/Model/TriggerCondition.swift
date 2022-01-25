@@ -11,7 +11,7 @@ struct TriggerCondition: Codable {
     let name: String
     let type: CollectionName
     let products: [Product]
-    let maxQuantity: JSONNull?
+    let maxQuantity: Int?
     let minQuantity: Int
 
     enum CodingKeys: String, CodingKey {

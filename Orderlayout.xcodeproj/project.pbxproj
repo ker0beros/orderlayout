@@ -18,6 +18,8 @@
 		4F24BD8827981154007990E1 /* TabItemPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F24BD8727981154007990E1 /* TabItemPage.swift */; };
 		4F24BD8A279813B4007990E1 /* TabItemCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F24BD89279813B4007990E1 /* TabItemCell.swift */; };
 		4F8323FC279957BA000D35E6 /* TabViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F8323FB279957BA000D35E6 /* TabViewModel.swift */; };
+		4FA5B9AA279E5D65001D5419 /* Json in Frameworks */ = {isa = PBXBuildFile; productRef = 4FA5B9A9279E5D65001D5419 /* Json */; };
+		4FA5B9AC279E5D65001D5419 /* Request in Frameworks */ = {isa = PBXBuildFile; productRef = 4FA5B9AB279E5D65001D5419 /* Request */; };
 		4FB31A472798F3AA00D9AFB2 /* Order.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4FB31A462798F3AA00D9AFB2 /* Order.swift */; };
 		4FB31A492798F3CC00D9AFB2 /* Page.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4FB31A482798F3CC00D9AFB2 /* Page.swift */; };
 		4FB31A4B2798F3D300D9AFB2 /* Cell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4FB31A4A2798F3D300D9AFB2 /* Cell.swift */; };
@@ -43,6 +45,7 @@
 		4F24BD8727981154007990E1 /* TabItemPage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabItemPage.swift; sourceTree = "<group>"; };
 		4F24BD89279813B4007990E1 /* TabItemCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabItemCell.swift; sourceTree = "<group>"; };
 		4F8323FB279957BA000D35E6 /* TabViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabViewModel.swift; sourceTree = "<group>"; };
+		4FA5B9AD279E5EDD001D5419 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
 		4FB31A462798F3AA00D9AFB2 /* Order.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Order.swift; sourceTree = "<group>"; };
 		4FB31A482798F3CC00D9AFB2 /* Page.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Page.swift; sourceTree = "<group>"; };
 		4FB31A4A2798F3D300D9AFB2 /* Cell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Cell.swift; sourceTree = "<group>"; };
@@ -60,6 +63,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				4FA5B9AC279E5D65001D5419 /* Request in Frameworks */,
+				4FA5B9AA279E5D65001D5419 /* Json in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -85,6 +90,7 @@
 		15654FF62797AD96003A7305 /* Orderlayout */ = {
 			isa = PBXGroup;
 			children = (
+				4FA5B9AD279E5EDD001D5419 /* Info.plist */,
 				4F198D652797CCE900E01A7C /* Layout */,
 				15654FF72797AD96003A7305 /* OrderlayoutApp.swift */,
 				15654FF92797AD96003A7305 /* ContentView.swift */,
@@ -174,6 +180,10 @@
 			dependencies = (
 			);
 			name = Orderlayout;
+			packageProductDependencies = (
+				4FA5B9A9279E5D65001D5419 /* Json */,
+				4FA5B9AB279E5D65001D5419 /* Request */,
+			);
 			productName = Orderlayout;
 			productReference = 15654FF42797AD96003A7305 /* Orderlayout.app */;
 			productType = "com.apple.product-type.application";
@@ -202,6 +212,9 @@
 				Base,
 			);
 			mainGroup = 15654FEB2797AD96003A7305;
+			packageReferences = (
+				4FA5B9A8279E5D65001D5419 /* XCRemoteSwiftPackageReference "swift-request" */,
+			);
 			productRefGroup = 15654FF52797AD96003A7305 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -380,6 +393,7 @@
 				DEVELOPMENT_TEAM = 7778Y2522V;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = Orderlayout/Info.plist;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
@@ -409,6 +423,7 @@
 				DEVELOPMENT_TEAM = 7778Y2522V;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = Orderlayout/Info.plist;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
@@ -449,6 +464,30 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		4FA5B9A8279E5D65001D5419 /* XCRemoteSwiftPackageReference "swift-request" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/carson-katri/swift-request";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 1.0.0;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		4FA5B9A9279E5D65001D5419 /* Json */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 4FA5B9A8279E5D65001D5419 /* XCRemoteSwiftPackageReference "swift-request" */;
+			productName = Json;
+		};
+		4FA5B9AB279E5D65001D5419 /* Request */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 4FA5B9A8279E5D65001D5419 /* XCRemoteSwiftPackageReference "swift-request" */;
+			productName = Request;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = 15654FEC2797AD96003A7305 /* Project object */;
 }

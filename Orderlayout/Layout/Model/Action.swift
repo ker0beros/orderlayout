@@ -10,20 +10,20 @@ import Foundation
 struct Action: Codable {
     let id: Int
     let name: String
-    let createdAt, updatedAt: Date
-    let deletedAt: JSONNull?
+    let createdAt, updatedAt: String
+    let deletedAt: String?
     let pricebookID: Int?
-    let outletID: JSONNull?
+    let outletID: Int?
     let categoryID: Int?
     let code: String?
     let actionDescription: String?
-    let colorCode: JSONNull?
+    let colorCode: String?
     let priceType, status: Int?
     let unitPrice, originalPrice: String?
     let cost: String?
     let chargeable, featured, outOfStock: Bool?
-    let availability: [JSONAny]?
-    let availableFrom, availableTo: JSONNull?
+    let availability: [String]?
+    let availableFrom, availableTo: String?
     let allowMediaOverride: Bool?
     let maxUnitPrice, rrp: String?
     let restrictPriceOverride, restrictVisibilityOverride: Int?
