@@ -9,6 +9,7 @@ import SwiftUI
 
 struct TabHeaderView: View {
     @Binding var index : Int
+    @EnvironmentObject var tm: tokenManager
     
     var body: some View {
         //VStack to stack header and bottom border
@@ -16,37 +17,21 @@ struct TabHeaderView: View {
         VStack (alignment: .leading, content: {
 
             HStack {
-                Button(action: {
-                    self.index = 1
-                }) {
-                    VStack {
-                        Text("Tab 1")
-                            .foregroundColor(self.index == 1 ? .white : .white.opacity(0.7))
-                        Capsule()
-                            .fill(self.index == 1 ? .white : .clear)
-                            .frame(height: 4)
-                    }
-                }
-                Button(action: {
-                    self.index = 2
-                }) {
-                    VStack {
-                        Text("Tab 2")
-                            .foregroundColor(self.index == 2 ? .white : .white.opacity(0.7))
-                        Capsule()
-                            .fill(self.index == 2 ? .white : .clear)
-                            .frame(height: 4)
-                    }
-                }
-                Button(action: {
-                    self.index = 3
-                }) {
-                    VStack {
-                        Text("Tab 3")
-                            .foregroundColor(self.index == 3 ? .white : .white.opacity(0.7))
-                        Capsule()
-                            .fill(self.index == 3 ? .white : .clear)
-                            .frame(height: 4)
+                ForEach(tm.pages) { tab in
+                    if (tab.groupID == nil) {
+                        Button(action: {
+                            self.index = tab.pageID
+                        }) {
+                            VStack {
+                                Text(tab.name)
+//                                    .foregroundColor(self.index == tab.id ? .white : .white.opacity(0.7))
+                                    .foregroundColor(.white.opacity(0.7))
+                                Capsule()
+//                                    .fill(self.index == tab.id ? .white : .clear)
+                                    .fill(.clear)
+                                    .frame(height: 4)
+                            }
+                        }
                     }
                 }
             }

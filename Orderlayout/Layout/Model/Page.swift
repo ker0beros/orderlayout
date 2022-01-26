@@ -7,7 +7,7 @@
 
 import Foundation
 
-struct Page: Codable {
+struct Page: Codable, Identifiable {
     let groupID: Int?
     let updatedAt: String
     let cells: [Cell]

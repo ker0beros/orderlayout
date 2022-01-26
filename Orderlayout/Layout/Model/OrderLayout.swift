@@ -7,7 +7,7 @@
 
 import Foundation
 
-struct Order: Codable {
+struct OrderLayout: Codable {
     let description, updatedAt, id: String
     let orderID: Int
     let name: String

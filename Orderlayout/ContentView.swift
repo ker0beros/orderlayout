@@ -8,8 +8,11 @@
 import SwiftUI
 
 struct ContentView: View {
+    @StateObject var tm = tokenManager()
+    
     var body: some View {
         MainTabLayout()
+            .environmentObject(tm)
     }
 }
 
