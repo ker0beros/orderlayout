@@ -8,26 +8,16 @@
 import SwiftUI
 
 struct TabItemPage: View {
-    @EnvironmentObject var tm: tokenManager
+    @EnvironmentObject var tm: ApiManager
     let columns: [GridItem] = Array(repeating: GridItem(.flexible()), count: 6)
-    let items: [String]
+    let items: [Cell]
     let geo: GeometryProxy
-    
-//    init(items: [String], geo: GeometryProxy) {
-//        guard let order = tm.order else {
-//            return
-//        }
-////        order = tm.order?.self
-//        self.items = items
-//        self.geo = geo
-//    }
     
     var body: some View {
             VStack {
                 LazyVGrid(columns: columns) {
-                    ForEach(1...12, id: \.self) { index in
-                        let rand = Int.random(in: 0...4)
-                        TabItemCell(item: items[rand], column: tm.width, row: tm.height, geo: geo)
+                    ForEach(items, id: \.cellID) { item in
+                        TabItemCell(item: item, column: tm.width, row: tm.height, geo: geo)
                     }
                 }.padding(.top)
                     .padding(.leading)
@@ -38,7 +28,7 @@ struct TabItemPage: View {
 }
 
 struct TabItemComponent_Previews: PreviewProvider {
-    static let array = ["Newspaper", "Snacks", "Drinks", "Food", "Dessert"]
+    static let array: [Cell] = []
     static var previews: some View {
         GeometryReader { proxy in
             TabItemPage(items: array, geo: proxy)

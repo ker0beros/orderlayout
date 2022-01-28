@@ -7,7 +7,7 @@
 
 import Foundation
 
-struct Action: Codable {
+struct Action: Codable, Hashable {
     let id: Int
     let name: String
     let createdAt, updatedAt: String
@@ -27,10 +27,10 @@ struct Action: Codable {
     let allowMediaOverride: Bool?
     let maxUnitPrice, rrp: String?
     let restrictPriceOverride, restrictVisibilityOverride: Int?
-    let mediaUrls: [MediaURL]?
+//    let mediaUrls: [MediaURL]?
     let type: String?
-    let triggerConditions: [TriggerCondition]?
-    let applyActions: [ApplyAction]?
+//    let triggerConditions: [TriggerCondition]?
+//    let applyActions: [ApplyAction]?
 
     enum CodingKeys: String, CodingKey {
         case id, name
@@ -57,9 +57,9 @@ struct Action: Codable {
         case rrp
         case restrictPriceOverride = "restrict_price_override"
         case restrictVisibilityOverride = "restrict_visibility_override"
-        case mediaUrls = "media_urls"
+//        case mediaUrls = "media_urls"
         case type
-        case triggerConditions = "trigger_conditions"
-        case applyActions = "apply_actions"
+//        case triggerConditions = "trigger_conditions"
+//        case applyActions = "apply_actions"
     }
 }

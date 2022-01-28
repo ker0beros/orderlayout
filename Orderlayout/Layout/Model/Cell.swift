@@ -7,7 +7,9 @@
 
 import Foundation
 
-struct Cell: Codable {
+// If actionType = OrderLayout/Group, action_id of cell = group_id of page
+
+struct Cell: Codable, Hashable {
     let color: Color
     let updatedAt: String
     let id: String
@@ -31,8 +33,20 @@ struct Cell: Codable {
     }
     
     enum ActionType: String, Codable {
-        case appModelOrderLayoutGroup = "App\\Model\\OrderLayout\\Group"
-        case appModelProduct = "App\\Model\\Product"
-        case appModelPromotion = "App\\Model\\Promotion"
+        case group = "App\\Model\\OrderLayout\\Group"
+        case product = "App\\Model\\Product"
+        case promotion = "App\\Model\\Promotion"
+    }
+    
+    static func isGroup(type: Cell.ActionType) -> Bool{
+        return type == ActionType.group
+    }
+    
+    static func isProduct(type: Cell.ActionType) -> Bool{
+        return type == ActionType.product
+    }
+    
+    static func isPromotion(type: Cell.ActionType) -> Bool{
+        return type == ActionType.promotion
     }
 }

@@ -8,14 +8,16 @@
 import Foundation
 import Request
 
-class tokenManager: ObservableObject {
+class ApiManager: ObservableObject {
 
-    @Published var name: String = ""
     @Published var pages: [Page] = []
     @Published var width: Int = 0
     @Published var height: Int = 0
-    private var order: OrderLayout?
-//    private let semaphore = DispatchSemaphore(value: 1)
+    @Published var groupIndex: Int?
+    @Published var currPages: [Page] = []
+    @Published var pageIndex: Int = 210
+    @Published var isLoading: Bool = true
+    var order: OrderLayout?
     
     func fetchToken() {
         //URL
@@ -28,7 +30,6 @@ class tokenManager: ObservableObject {
             "client_id": "4939304e-1b88-4ee4-bdc5-6b831d25f258",
             "client_secret": "O9OGxXjwe8HVSKR9yXZtnCtvkGE8rFjfe6QFAZEY"
         ]
-        print("Run fetch token")
         Request{
             Url(url)
             Header.ContentType(.json)
@@ -39,6 +40,7 @@ class tokenManager: ObservableObject {
             (data) in
             let resData = try! JSONDecoder().decode(ResponseBody.self, from: data)
             UserDefaults.standard.setToken(token: resData.accessToken)
+            print(resData.accessToken)
         }
         .call()
     }
@@ -46,6 +48,7 @@ class tokenManager: ObservableObject {
     func fetchOrderLayout() {
         //URL
         let url = "http://itlhub.hq.getslurp.com:3000/orderlayout"
+        print("Loading started...")
         
         //check if token exists
         if (UserDefaults.standard.getToken() != "") {
@@ -57,10 +60,23 @@ class tokenManager: ObservableObject {
             .onData{ (data) in
                 do {
                     let resData = try JSONDecoder().decode(OrderLayout.self, from: data)
+                    print("parsing data...")
                     DispatchQueue.main.async {
+                        self.order = resData
                         self.pages = resData.pages
                         self.width = resData.width
                         self.height = resData.height
+                        
+                        print("processing page...")
+                        for page in self.pages {
+                            if (page.groupID == self.groupIndex) {
+                                self.currPages.append(page)
+                            }
+                        }
+                        self.pageIndex = self.currPages.first!.pageID
+                        print("Data has been fetched!")
+                        print("Loading ended!")
+                        self.isLoading.toggle()
                     }
                 } catch {
                     print("Error in parsing data request")
@@ -70,10 +86,10 @@ class tokenManager: ObservableObject {
                 print("Error on fetching request")
             })
             .call()
+            print("API is called")
         } else {
             print("Token is empty")
             self.fetchToken()
-//            self.fetchOrderLayout()
         }
     }
     

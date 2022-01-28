@@ -8,17 +8,24 @@
 import SwiftUI
 
 struct MainTabLayout: View {
-    @State var index = 1
-    @EnvironmentObject var tm: tokenManager
+    @EnvironmentObject var tm: ApiManager
+    @EnvironmentObject var vm: TabViewModel
+//    @State var groupIndex: Int?
+//    @State var pageIndex: Int = 0
+    
+    //At Header, get pages that have matching groupId
+        //Pass pageId to TabItemGroupView
+    //At TabGroupView, get pages that match pageId given
+        //Pass cells to display
 
     var body: some View {
         VStack (spacing: 0){
-            if (tm.pages.count < 1) {
+            if (tm.isLoading) {
                 LoadingView()
             } else {
-                TabHeaderView(index: self.$index)
+                TabHeaderView(groupIndex: $tm.groupIndex, pageIndex: $tm.pageIndex)
                 
-                TabItemGroupView(tabIndex: self.$index)
+                TabItemGroupView(pageIndex: $tm.pageIndex, groupIndex: $tm.groupIndex)
                 Spacer()
             }
         }.onAppear {
@@ -30,7 +37,7 @@ struct MainTabLayout: View {
 struct MainTabLayout_Previews: PreviewProvider {
     static var previews: some View {
         MainTabLayout()
-            .environmentObject(tokenManager())
+            .environmentObject(ApiManager())
 .previewInterfaceOrientation(.landscapeLeft)
     }
 }

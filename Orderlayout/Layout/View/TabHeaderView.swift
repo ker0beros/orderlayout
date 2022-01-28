@@ -8,8 +8,9 @@
 import SwiftUI
 
 struct TabHeaderView: View {
-    @Binding var index : Int
-    @EnvironmentObject var tm: tokenManager
+    @EnvironmentObject var tm: ApiManager
+    @Binding var groupIndex: Int?
+    @Binding var pageIndex: Int
     
     var body: some View {
         //VStack to stack header and bottom border
@@ -18,17 +19,15 @@ struct TabHeaderView: View {
 
             HStack {
                 ForEach(tm.pages) { tab in
-                    if (tab.groupID == nil) {
+                    if (tab.groupID == groupIndex) {
                         Button(action: {
-                            self.index = tab.pageID
+                            pageIndex = tab.pageID
                         }) {
                             VStack {
                                 Text(tab.name)
-//                                    .foregroundColor(self.index == tab.id ? .white : .white.opacity(0.7))
-                                    .foregroundColor(.white.opacity(0.7))
+                                    .foregroundColor(pageIndex == tab.pageID ? .white : .white.opacity(0.7))
                                 Capsule()
-//                                    .fill(self.index == tab.id ? .white : .clear)
-                                    .fill(.clear)
+                                    .fill(pageIndex == tab.pageID ? .white : .clear)
                                     .frame(height: 4)
                             }
                         }
@@ -39,15 +38,13 @@ struct TabHeaderView: View {
             .padding(.horizontal)
             .padding(.bottom, 10)
             .background(.red)
-//            .animation(.default)
         })
     }
 }
 
 struct TabHeaderView_Previews: PreviewProvider {
-    @State static var index : Int = 1
     static var previews: some View {
-        TabHeaderView(index: self.$index)
+        TabHeaderView(groupIndex: .constant(nil), pageIndex: .constant(0))
 .previewInterfaceOrientation(.landscapeLeft)
     }
 }
